@@ -40,4 +40,15 @@ public class ClienteService {
     public void deleteCliente(Long id){
         clienteRepository.deleteById(id);
     }
+
+    public ClienteDto updateCliente(Cliente cliente){
+        boolean existe = clienteRepository.existsById(cliente.getIdCliente());
+
+        if (existe == true) {
+            saveCliente(cliente);
+            ClienteDto clienteDto = modelMapper.map(cliente, ClienteDto.class);
+            return clienteDto;
+        }
+        return null;
+    }
 }
