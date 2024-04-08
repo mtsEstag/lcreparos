@@ -2,12 +2,15 @@
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/controllers/ClienteController.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/Dtos/ClienteDto.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/services/TipoTelefoneService.java
+/home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/controllers/TelefoneController.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/repositories/EnderecoRepository.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/models/TipoTelefone.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/controllers/TipoTelefoneController.java
+/home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/Dtos/TelefoneDto.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/services/ClienteService.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/models/Cliente.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/repositories/ClienteRepository.java
+/home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/services/TelefoneService.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/LcreparosApplication.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/repositories/TipoTelefoneRepository.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/models/Telefone.java
