@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -17,7 +19,7 @@ public class Produto {
     @Column(name = "id_produto")
     private Long idProduto;
 
-    @Column(name = "codigo_barra")
+    @Column(name = "codigo_barra", unique = true)
     private String codigoBarra;
 
     @Column(name = "nome", nullable = false )
@@ -32,6 +34,7 @@ public class Produto {
     @Column(name = "preco" , nullable = false)
     private double preco;
 
-    //@Column(name = "id_categoria")
-    //private Categoria categoria;
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
+    private Categoria categoria;
 }
