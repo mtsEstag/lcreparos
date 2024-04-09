@@ -19,7 +19,7 @@ public class Produto {
     @Column(name = "id_produto")
     private Long idProduto;
 
-    @Column(name = "codigo_barra", unique = true)
+    @Column(name = "codigo_barra", unique = true, nullable = true)
     private String codigoBarra;
 
     @Column(name = "nome", nullable = false )
