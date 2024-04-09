@@ -1,9 +1,11 @@
 package com.example.lcreparos.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -33,14 +36,14 @@ public class Venda {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime data;
 
-    // @Column(name = "data")
-    // private Date data;
-
     @Column(name = "observacoes")
     private String observacoes;
 
-    // @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
-    // private List<ProdutoVenda> produtos;
+    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
+    private List<ProdutoVenda> produtos;
+
+    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
+    private List<Pagamento> pagamentos;
 
     @PrePersist
     protected void onCreate() {
