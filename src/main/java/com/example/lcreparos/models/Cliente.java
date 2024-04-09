@@ -38,5 +38,9 @@ public class Cliente {
     @JsonIgnore
     private List<Telefone> telefones;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Venda> vendas;
+
 
 }
