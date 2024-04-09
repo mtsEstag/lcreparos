@@ -37,9 +37,9 @@ public class PagamentoController {
     }
 
     @GetMapping
-    public Page<Pagamento> findAllPage(Pageable pageable) {
+    public Page<PagamentoDto> findAllPage(Pageable pageable) {
 
-        Page<Pagamento> page = pagamentoService.findAllPage(pageable);
+        Page<PagamentoDto> page = pagamentoService.findAllPage(pageable);
 
         return page;
     }

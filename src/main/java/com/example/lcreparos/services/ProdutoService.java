@@ -31,11 +31,13 @@ public class ProdutoService {
         return listaDto;
     }
 
-    public Page<Produto> findAllPage(Pageable pageable) {
+    public Page<ProdutoDto> findAllPage(Pageable pageable) {
 
         Page<Produto> pageAll = produtoRepository.findAll(pageable);
 
-        return pageAll;
+        Page<ProdutoDto> pageDto = pageAll.map(endereco -> modelMapper.map(endereco, ProdutoDto.class));
+
+        return pageDto;
     }
 
     public ProdutoDto findById(Long id) {

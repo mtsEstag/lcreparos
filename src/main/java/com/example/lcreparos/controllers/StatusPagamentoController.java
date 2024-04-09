@@ -14,7 +14,7 @@ import com.example.lcreparos.services.StatusPagamentoService;
 
 
 @RestController
-@RequestMapping("statuspagamento")
+@RequestMapping("statusPagamento")
 public class StatusPagamentoController {
     
     @Autowired

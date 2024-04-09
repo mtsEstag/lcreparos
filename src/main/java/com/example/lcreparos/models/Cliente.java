@@ -31,15 +31,15 @@ public class Cliente {
     private String cpf;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    @JsonIgnore
+    // @JsonIgnore
     private List<Endereco> enderecos;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    @JsonIgnore
+    // @JsonIgnore
     private List<Telefone> telefones;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    @JsonIgnore
+    // @JsonIgnore
     private List<Venda> vendas;
 
 

@@ -1,7 +1,7 @@
 package com.example.lcreparos.Dtos;
 
 import com.example.lcreparos.models.Cliente;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -15,6 +15,6 @@ public class EnderecoDto {
     private String rua;
     private String numero;
     private String complemento;
-    @JsonIgnore
+    @JsonBackReference
     private Cliente cliente;
 }

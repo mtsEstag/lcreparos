@@ -31,11 +31,13 @@ public class CategoriaService {
         return listaDto;
     }
 
-    public Page<Categoria> findAllPage(Pageable pageable) {
+    public Page<CategoriaDto> findAllPage(Pageable pageable) {
 
         Page<Categoria> pageAll = categoriaRepository.findAll(pageable);
 
-        return pageAll;
+        Page<CategoriaDto> pageDto = pageAll.map(endereco -> modelMapper.map(endereco, CategoriaDto.class));
+
+        return pageDto;
     }
 
     public CategoriaDto findById(Long id) {

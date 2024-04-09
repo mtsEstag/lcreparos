@@ -31,11 +31,13 @@ public class VendaService {
         return listaDto;
     }
 
-    public Page<Venda> findAllPage(Pageable pageable) {
+    public Page<VendaDto> findAllPage(Pageable pageable) {
 
         Page<Venda> pageAll = vendaRepository.findAll(pageable);
 
-        return pageAll;
+        Page<VendaDto> pageDto = pageAll.map(endereco -> modelMapper.map(endereco, VendaDto.class));
+
+        return pageDto;
     }
 
     public VendaDto findById(Long id) {

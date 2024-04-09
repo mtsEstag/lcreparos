@@ -37,9 +37,9 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public Page<Produto> findAllPage(Pageable pageable) {
+    public Page<ProdutoDto> findAllPage(Pageable pageable) {
 
-        Page<Produto> page = produtoService.findAllPage(pageable);
+        Page<ProdutoDto> page = produtoService.findAllPage(pageable);
 
         return page;
     }

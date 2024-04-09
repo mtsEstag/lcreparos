@@ -32,11 +32,13 @@ public class EnderecoService {
         return listaDto;
     }
 
-    public Page<Endereco> findAllPage(Pageable pageable) {
+    public Page<EnderecoDto> findAllPage(Pageable pageable) {
 
         Page<Endereco> pageAll = enderecoRepository.findAll(pageable);
 
-        return pageAll;
+        Page<EnderecoDto> pageDto = pageAll.map(endereco -> modelMapper.map(endereco, EnderecoDto.class));
+
+        return pageDto;
     }
 
     public EnderecoDto findById(Long id) {

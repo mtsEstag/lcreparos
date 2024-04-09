@@ -35,9 +35,9 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public Page<Endereco> findAllPage(Pageable pageable) {
+    public Page<EnderecoDto> findAllPage(Pageable pageable) {
 
-        Page<Endereco> page = enderecoService.findAllPage(pageable);
+        Page<EnderecoDto> page = enderecoService.findAllPage(pageable);
 
         return page;
     }

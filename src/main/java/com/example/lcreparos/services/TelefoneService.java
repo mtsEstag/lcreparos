@@ -32,11 +32,13 @@ public class TelefoneService {
         return listaDto;
     }
 
-    public Page<Telefone> findAllPage(Pageable pageable) {
+    public Page<TelefoneDto> findAllPage(Pageable pageable) {
 
         Page<Telefone> pageAll = telefoneRepository.findAll(pageable);
 
-        return pageAll;
+        Page<TelefoneDto> pageDto = pageAll.map(endereco -> modelMapper.map(endereco, TelefoneDto.class));
+
+        return pageDto;
     }
 
     public TelefoneDto findById(Long id) {

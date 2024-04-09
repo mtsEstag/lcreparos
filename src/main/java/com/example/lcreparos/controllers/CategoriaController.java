@@ -37,9 +37,9 @@ public class CategoriaController {
     }
 
     @GetMapping
-    public Page<Categoria> findAllPage(Pageable pageable) {
+    public Page<CategoriaDto> findAllPage(Pageable pageable) {
 
-        Page<Categoria> page = categoriaService.findAllPage(pageable);
+        Page<CategoriaDto> page = categoriaService.findAllPage(pageable);
 
         return page;
     }

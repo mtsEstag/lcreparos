@@ -37,9 +37,9 @@ public class ClienteController {
     }
 
     @GetMapping
-    public Page<Cliente> findAllPage(Pageable pageable) {
+    public Page<ClienteDto> findAllPage(Pageable pageable) {
 
-        Page<Cliente> page = clienteService.findAllPage(pageable);
+        Page<ClienteDto> page = clienteService.findAllPage(pageable);
 
         return page;
     }

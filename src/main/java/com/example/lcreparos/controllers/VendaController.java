@@ -37,9 +37,9 @@ public class VendaController {
     }
 
     @GetMapping
-    public Page<Venda> findAllPage(Pageable pageable) {
+    public Page<VendaDto> findAllPage(Pageable pageable) {
 
-        Page<Venda> page = vendaService.findAllPage(pageable);
+        Page<VendaDto> page = vendaService.findAllPage(pageable);
 
         return page;
     }

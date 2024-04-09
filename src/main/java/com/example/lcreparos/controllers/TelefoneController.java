@@ -35,9 +35,9 @@ public class TelefoneController {
     }
 
     @GetMapping
-    public Page<Telefone> findAllPage(Pageable pageable) {
+    public Page<TelefoneDto> findAllPage(Pageable pageable) {
 
-        Page<Telefone> page = telefoneService.findAllPage(pageable);
+        Page<TelefoneDto> page = telefoneService.findAllPage(pageable);
 
         return page;
     }

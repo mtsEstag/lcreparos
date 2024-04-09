@@ -31,11 +31,17 @@ public class ClienteService {
         return listaDto;
     }
 
-    public Page<Cliente> findAllPage(Pageable pageable) {
+    public Page<ClienteDto> findAllPage(Pageable pageable) {
+
+        // Page<Cliente> pageAll = clienteRepository.findAll(pageable);
+
+        // return pageAll;
 
         Page<Cliente> pageAll = clienteRepository.findAll(pageable);
 
-        return pageAll;
+        Page<ClienteDto> pageDto = pageAll.map(cliente -> modelMapper.map(cliente, ClienteDto.class));
+
+        return pageDto;
     }
 
     public ClienteDto findById(Long id) {
@@ -54,12 +60,11 @@ public class ClienteService {
 
     public Cliente saveCliente(Cliente cliente) {
 
-        try{
+        try {
 
             clienteRepository.save(cliente);
             return cliente;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
 
             return new Cliente();
         }
@@ -86,9 +91,9 @@ public class ClienteService {
 
             saveCliente(cliente);
             ClienteDto clienteDto = modelMapper.map(cliente, ClienteDto.class);
-            return clienteDto;            
+            return clienteDto;
         }
-        
+
         return null;
     }
 }
