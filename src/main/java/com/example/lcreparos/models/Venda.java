@@ -29,7 +29,7 @@ public class Venda {
     private Long idVenda;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
     
     @Column(name = "data", nullable = false, columnDefinition = "TIMESTAMP")

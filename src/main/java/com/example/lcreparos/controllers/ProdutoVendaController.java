@@ -90,4 +90,16 @@ public class ProdutoVendaController {
         return ResponseEntity.badRequest().body("Não funcionou");
     }
 
+    @PostMapping("/lista")
+    public void saveListProdutoVenda(@RequestBody List<ProdutoVenda> produtoVenda) {
+
+        for (ProdutoVenda produto : produtoVenda) {
+            // produtoVendaService.saveProdutoVenda(produto);
+            System.out.println(produto);
+        }
+
+        
+    }
+
+
 }

@@ -25,7 +25,8 @@ public class ProdutoVendaService {
 
         List<ProdutoVenda> lista = produtoVendaRepository.findAll();
 
-        List<ProdutoVendaDto> listaDto = lista.stream().map(produtoVenda -> modelMapper.map(produtoVenda, ProdutoVendaDto.class))
+        List<ProdutoVendaDto> listaDto = lista.stream()
+                .map(produtoVenda -> modelMapper.map(produtoVenda, ProdutoVendaDto.class))
                 .collect(Collectors.toList());
 
         return listaDto;
@@ -56,12 +57,11 @@ public class ProdutoVendaService {
 
     public ProdutoVenda saveProdutoVenda(ProdutoVenda produtoVenda) {
 
-        try{
+        try {
 
             produtoVendaRepository.save(produtoVenda);
             return produtoVenda;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
 
             return new ProdutoVenda();
         }
@@ -88,9 +88,20 @@ public class ProdutoVendaService {
 
             saveProdutoVenda(produtoVenda);
             ProdutoVendaDto produtoVendaDto = modelMapper.map(produtoVenda, ProdutoVendaDto.class);
-            return produtoVendaDto;            
+            return produtoVendaDto;
         }
-        
+
         return null;
+    }
+
+    public void saveListProdutoVenda(ProdutoVenda produtoVenda) {
+
+        try {
+
+            produtoVendaRepository.save(produtoVenda);
+
+        } catch (Exception e) {
+
+        }
     }
 }

@@ -2,7 +2,6 @@ package com.example.lcreparos.models;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -31,15 +30,12 @@ public class Cliente {
     private String cpf;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    // @JsonIgnore
     private List<Endereco> enderecos;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    // @JsonIgnore
     private List<Telefone> telefones;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    // @JsonIgnore
     private List<Venda> vendas;
 
 
