@@ -35,4 +35,7 @@ public class ProdutoVenda {
     @Column(name = "qtde")
     private int quantidade;
 
+    @Column(name = "total")
+    private Double total;
+
 }

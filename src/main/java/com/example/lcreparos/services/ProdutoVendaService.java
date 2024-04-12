@@ -63,7 +63,7 @@ public class ProdutoVendaService {
 
         Produto produto = produtoVenda.getProduto();
         Long idProduto = produto.getIdProduto();
-        
+
         try {
             if (produtoVenda.getPrecoVenda() == 0) {
                 produtoVenda.setPrecoVenda(modifyValor(idProduto));
@@ -71,8 +71,10 @@ public class ProdutoVendaService {
             if (produtoVenda.getQuantidade() == 0) {
                 produtoVenda.setQuantidade(1);
             }
-
+            produtoVenda.setTotal(calcValor(produtoVenda));
             produtoVendaRepository.save(produtoVenda);
+            
+
             return produtoVenda;
 
         } catch (Exception e) {
@@ -114,5 +116,11 @@ public class ProdutoVendaService {
         System.out.println(produtoItem);
         return produtoItem.getPreco();
 
+    }
+
+    public Double calcValor(ProdutoVenda produto) {
+        int quantidade = produto.getQuantidade();
+        Double preco = produto.getPrecoVenda();
+        return quantidade * preco;
     }
 }
