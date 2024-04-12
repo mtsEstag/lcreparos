@@ -94,7 +94,7 @@ public class ProdutoVendaController {
     public void saveListProdutoVenda(@RequestBody List<ProdutoVenda> produtoVenda) {
 
         for (ProdutoVenda produto : produtoVenda) {
-            // produtoVendaService.saveProdutoVenda(produto);
+            produtoVendaService.saveProdutoVenda(produto);
             System.out.println(produto);
         }
 

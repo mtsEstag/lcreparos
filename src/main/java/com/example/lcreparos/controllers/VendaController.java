@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.lcreparos.Dtos.VendaDto;
+import com.example.lcreparos.Dtos.VendaJDto;
+import com.example.lcreparos.models.ProdutoVenda;
 import com.example.lcreparos.models.Venda;
 import com.example.lcreparos.services.VendaService;
 
@@ -46,7 +47,7 @@ public class VendaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<VendaDto> findById(@PathVariable Long id) {
-        
+
         VendaDto vendaDto = vendaService.findById(id);
 
         if (vendaDto.getIdVenda() == null) {
@@ -62,10 +63,10 @@ public class VendaController {
         venda = vendaService.saveVenda(venda);
 
         if (venda.getIdVenda() == null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-		}
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
 
-		return ResponseEntity.status(HttpStatus.CREATED).body(venda);
+        return ResponseEntity.status(HttpStatus.CREATED).body(venda);
     }
 
     @DeleteMapping("/{id}")
@@ -74,7 +75,7 @@ public class VendaController {
         boolean deletado = vendaService.deleteVenda(id);
 
         if (deletado) {
-            return ResponseEntity.ok("{RegistroDeletado}");        
+            return ResponseEntity.ok("{RegistroDeletado}");
         }
 
         return ResponseEntity.badRequest().body("Não pode ser deletado");
@@ -90,6 +91,19 @@ public class VendaController {
         return ResponseEntity.badRequest().body("Não funcionou");
     }
 
+    @PostMapping("/nova")
+    public ResponseEntity<String> fazerVenda(@RequestBody VendaJDto vendaJDto) {
 
+        List<ProdutoVenda> lista = vendaJDto.getProdutoVenda();
+        System.out.println(lista);
+        Boolean funciona = vendaService.fazerVenda(vendaJDto);
+
+        if (funciona) {
+            return ResponseEntity.ok("{Criado}");
+        }
+        return ResponseEntity.badRequest().body("{erro}");
+        
+
+    }
 
 }

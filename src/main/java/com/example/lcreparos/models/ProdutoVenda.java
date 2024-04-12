@@ -1,6 +1,5 @@
 package com.example.lcreparos.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,8 +26,7 @@ public class ProdutoVenda {
     private Produto produto;
 
     @ManyToOne
-    @JoinColumn(name = "id_venda", nullable = false)
-    @JsonIgnore
+    @JoinColumn(name = "id_venda", nullable = true)
     private Venda venda;
 
     @Column(name = "preco_venda")

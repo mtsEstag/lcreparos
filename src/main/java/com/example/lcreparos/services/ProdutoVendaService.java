@@ -10,7 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.lcreparos.Dtos.ProdutoVendaDto;
+import com.example.lcreparos.models.Produto;
 import com.example.lcreparos.models.ProdutoVenda;
+import com.example.lcreparos.repositories.ProdutoRepository;
 import com.example.lcreparos.repositories.ProdutoVendaRepository;
 
 @Service
@@ -18,6 +20,8 @@ public class ProdutoVendaService {
 
     @Autowired
     private ProdutoVendaRepository produtoVendaRepository;
+    @Autowired
+    private ProdutoRepository produtoRepository;
     @Autowired
     private ModelMapper modelMapper;
 
@@ -57,12 +61,22 @@ public class ProdutoVendaService {
 
     public ProdutoVenda saveProdutoVenda(ProdutoVenda produtoVenda) {
 
+        Produto produto = produtoVenda.getProduto();
+        Long idProduto = produto.getIdProduto();
+        
         try {
+            if (produtoVenda.getPrecoVenda() == 0) {
+                produtoVenda.setPrecoVenda(modifyValor(idProduto));
+            }
+            if (produtoVenda.getQuantidade() == 0) {
+                produtoVenda.setQuantidade(1);
+            }
 
             produtoVendaRepository.save(produtoVenda);
             return produtoVenda;
-        } catch (Exception e) {
 
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
             return new ProdutoVenda();
         }
     }
@@ -94,14 +108,11 @@ public class ProdutoVendaService {
         return null;
     }
 
-    public void saveListProdutoVenda(ProdutoVenda produtoVenda) {
+    public Double modifyValor(Long idProdutoVenda) {
 
-        try {
+        Produto produtoItem = produtoRepository.findById(idProdutoVenda).orElse(null);
+        System.out.println(produtoItem);
+        return produtoItem.getPreco();
 
-            produtoVendaRepository.save(produtoVenda);
-
-        } catch (Exception e) {
-
-        }
     }
 }

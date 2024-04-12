@@ -10,6 +10,7 @@
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/controllers/CategoriaController.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/repositories/ClienteRepository.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/controllers/ProdutoVendaController.java
+/home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/Dtos/VendaJDto.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/controllers/ProdutoController.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/config/ModelMapperConfig.java
 /home/matheussilva/Documentos/lcreparos/src/main/java/com/example/lcreparos/services/StatusPagamentoService.java
