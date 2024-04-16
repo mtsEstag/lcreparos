@@ -23,6 +23,8 @@ public class ProdutoVendaService {
     @Autowired
     private ProdutoRepository produtoRepository;
     @Autowired
+    private ProdutoService produtoService;
+    @Autowired
     private ModelMapper modelMapper;
 
     public List<ProdutoVendaDto> findAll() {
@@ -72,8 +74,10 @@ public class ProdutoVendaService {
                 produtoVenda.setQuantidade(1);
             }
             produtoVenda.setTotal(calcValor(produtoVenda));
+
             produtoVendaRepository.save(produtoVenda);
             
+            produtoService.modifyQuantidade(idProduto, produtoVenda.getQuantidade());
 
             return produtoVenda;
 
@@ -123,4 +127,5 @@ public class ProdutoVendaService {
         Double preco = produto.getPrecoVenda();
         return quantidade * preco;
     }
+
 }

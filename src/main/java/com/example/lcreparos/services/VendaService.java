@@ -109,7 +109,7 @@ public class VendaService {
                 produto.setVenda(venda);
                 produtoVendaService.saveProdutoVenda(produto);
             }
-
+            
             venda.setTotal(vendaRepository.calcTotal(venda.getIdVenda()));
 
             updateVenda(venda);

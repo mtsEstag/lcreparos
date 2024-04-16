@@ -56,12 +56,11 @@ public class ProdutoService {
 
     public Produto saveProduto(Produto produto) {
 
-        try{
+        try {
 
             produtoRepository.save(produto);
             return produto;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
 
             return new Produto();
         }
@@ -88,9 +87,25 @@ public class ProdutoService {
 
             saveProduto(produto);
             ProdutoDto produtoDto = modelMapper.map(produto, ProdutoDto.class);
-            return produtoDto;            
+            return produtoDto;
         }
-        
+
         return null;
+    }
+
+    public void modifyQuantidade(Long idProdutoVenda, int qtdeProdutoVenda) {
+
+        try {
+            ProdutoDto produtoDto = findById(idProdutoVenda);
+
+            Produto produto = modelMapper.map(produtoDto, Produto.class);
+
+            produto.setQtdeEstoque(produto.getQtdeEstoque() - qtdeProdutoVenda);
+
+            updateProduto(produto);
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+
     }
 }
