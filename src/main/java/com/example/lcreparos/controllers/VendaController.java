@@ -99,6 +99,7 @@ public class VendaController {
         Boolean funciona = vendaService.fazerVenda(vendaJDto);
 
         if (funciona) {
+            
             return ResponseEntity.ok("{Criado}");
         }
         return ResponseEntity.badRequest().body("{erro}");

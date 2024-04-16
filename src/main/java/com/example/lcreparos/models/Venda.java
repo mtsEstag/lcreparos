@@ -45,6 +45,9 @@ public class Venda {
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
     private List<Pagamento> pagamentos;
 
+    @Column(name = "total")
+    private Double total;
+
     @PrePersist
     protected void onCreate() {
         data = LocalDateTime.now(); // Define a data e hora atual no momento da criação da venda

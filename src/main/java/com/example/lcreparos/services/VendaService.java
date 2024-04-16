@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import com.example.lcreparos.Dtos.ProdutoVendaDto;
 import com.example.lcreparos.Dtos.VendaDto;
 import com.example.lcreparos.Dtos.VendaJDto;
 import com.example.lcreparos.models.ProdutoVenda;
@@ -44,8 +42,6 @@ public class VendaService {
 
         Page<VendaDto> pageDto = pageAll.map(endereco -> modelMapper.map(endereco, VendaDto.class));
 
-
-
         return pageDto;
     }
 
@@ -66,7 +62,6 @@ public class VendaService {
     public Venda saveVenda(Venda venda) {
 
         try {
-
             vendaRepository.save(venda);
             return venda;
         } catch (Exception e) {
@@ -104,22 +99,27 @@ public class VendaService {
 
     public Boolean fazerVenda(VendaJDto vendaJDto) {
         Venda venda = vendaJDto.getVenda();
+
         List<ProdutoVenda> produtos = vendaJDto.getProdutoVenda();
-        // System.out.println("*********************");
-        // System.out.println(venda);
-        // System.out.println("*********************");
-        // System.out.println(produtos);
 
         try {
             saveVenda(venda);
+
             for (ProdutoVenda produto : produtos) {
                 produto.setVenda(venda);
                 produtoVendaService.saveProdutoVenda(produto);
             }
+
+            venda.setTotal(vendaRepository.calcTotal(venda.getIdVenda()));
+
+            updateVenda(venda);
+            
             return true;
 
         } catch (Exception e) {
+
             System.out.println(e.getLocalizedMessage());
+
             return false;
         }
     }
