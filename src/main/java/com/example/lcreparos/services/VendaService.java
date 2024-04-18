@@ -103,17 +103,13 @@ public class VendaService {
         List<ProdutoVenda> produtos = vendaJDto.getProdutoVenda();
 
         try {
-            saveVenda(venda);
 
+            saveVenda(venda);
             for (ProdutoVenda produto : produtos) {
                 produto.setVenda(venda);
                 produtoVendaService.saveProdutoVenda(produto);
             }
-            
-            venda.setTotal(vendaRepository.calcTotal(venda.getIdVenda()));
 
-            updateVenda(venda);
-            
             return true;
 
         } catch (Exception e) {

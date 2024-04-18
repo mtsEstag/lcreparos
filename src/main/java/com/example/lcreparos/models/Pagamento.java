@@ -1,6 +1,9 @@
 package com.example.lcreparos.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.time.LocalDateTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,27 +26,22 @@ public class Pagamento {
     private Long idPagamento;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "id_venda", nullable = false)
     private Venda venda;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "metodo_pagamento", nullable = false)
     private MetodoPagamento metodoPagamento;
 
-    @Column(name = "total_pago")
-    private double totalPago;
-
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "status_pagamento", nullable = false)
     private StatusPagamento statusPagamento;
 
-    @Column(name = "numero_parcelas")
-    private int numeroParcelas;
+    @Column(name = "data_pagamento", columnDefinition = "TIMESTAMP")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dataPagamento;
 
-    @Column(name = "valor_parcela")
-    private double valorParcela;
+    @Column(name = "total")
+    private Double total;
 
 }

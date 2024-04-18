@@ -1,5 +1,7 @@
 package com.example.lcreparos.Dtos;
 
+import java.time.LocalDateTime;
+
 import com.example.lcreparos.models.MetodoPagamento;
 import com.example.lcreparos.models.StatusPagamento;
 import com.example.lcreparos.models.Venda;
@@ -14,8 +16,7 @@ public class PagamentoDto {
     @JsonIgnore
     private Venda venda;
     private MetodoPagamento metodoPagamento;
-    private double totalPago;
     private StatusPagamento statusPagamento;
-    private int numeroParcelas;
-    private double valorParcela;
+    private LocalDateTime dataPagamento;
+    private Double total;
 }

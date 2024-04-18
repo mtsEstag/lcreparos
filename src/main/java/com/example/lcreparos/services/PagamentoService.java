@@ -1,5 +1,6 @@
 package com.example.lcreparos.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,8 +58,16 @@ public class PagamentoService {
     public Pagamento savePagamento(Pagamento pagamento) {
 
         try{
+            Long idVenda = pagamento.getVenda().getIdVenda();
+            pagamento.setTotal(pagamentoRepository.calcTotal(idVenda));
+            
+
+            if(pagamento.getStatusPagamento().getIdStatus() == 2){
+                pagamento.setDataPagamento(LocalDateTime.now());
+            }
 
             pagamentoRepository.save(pagamento);
+
             return pagamento;
         }
         catch(Exception e){
